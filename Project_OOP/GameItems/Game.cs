@@ -7,7 +7,7 @@ namespace Project_OOP.GameItems
     {
         private static int _gameIndexSeed = 38256;
         private readonly GameAccount _acc1, _acc2;
-        public int GameIndex { get; protected set; }
+        protected int GameIndex { get; set; }
 
         protected readonly int rating;
         public abstract int Rating { get; }

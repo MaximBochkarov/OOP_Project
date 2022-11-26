@@ -3,7 +3,7 @@ using Project_OOP.GameItems;
 
 namespace Project_OOP.DataBase
 {
-    public class DBMethods
+    public static class DataHandling
     {
         public static void GetAccInfo()
         {

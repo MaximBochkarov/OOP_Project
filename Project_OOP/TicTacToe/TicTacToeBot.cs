@@ -14,7 +14,6 @@ namespace Project_OOP.TicTacToe
             _rand = new Random();
             _logic = logic;
         }
-    
         public void BotMakeMove(char c)
         {
             int position;
@@ -76,13 +75,13 @@ namespace Project_OOP.TicTacToe
         
         private int GetCheckedRowPos(char[] row, int rowPos, char c)
         {
-            var fill = CheckPosition(row, c);
+            var fill = TicTacToeAdditions.CheckPosition(row, c);
             if (fill != -1) return fill + rowPos * 3;
             return -1;
         }
         private int GetCheckedColPos(char[] col, int colPos, char c)
         {
-            var fill = CheckPosition(col, c);
+            var fill = TicTacToeAdditions.CheckPosition(col, c);
             if (fill != -1) return colPos+1 + (fill-1) * 3;
             return -1;
         }
@@ -115,16 +114,16 @@ namespace Project_OOP.TicTacToe
         }
         private int GetCheckedMainDiagonalPos(char[] row, char c)
         {
-            var fillMy = CheckPosition(row, c);
-            var fillHis = CheckPosition(row, TicTacToeAdditions.OppositeSign(c));
+            var fillMy = TicTacToeAdditions.CheckPosition(row, c);
+            var fillHis = TicTacToeAdditions.CheckPosition(row, TicTacToeAdditions.OppositeSign(c));
             if (fillMy != -1) return fillMy + (fillMy-1) * 3;
             if (fillHis != -1) return fillHis + (fillHis-1) * 3;
             return -1;
         }
         private int GetCheckedSideDiagonalPos(char[] row, char c)
         {
-            var fillMy = CheckPosition(row, c);
-            var fillHis = CheckPosition(row, TicTacToeAdditions.OppositeSign(c));
+            var fillMy = TicTacToeAdditions.CheckPosition(row, c);
+            var fillHis = TicTacToeAdditions.CheckPosition(row, TicTacToeAdditions.OppositeSign(c));
             if (fillMy != -1)
             {
                 int getMyCof = 2;
@@ -139,19 +138,7 @@ namespace Project_OOP.TicTacToe
             }
             return -1;
         }
-        private int CheckPosition(char[] row, char c)
-        {
-            int position = -1, count = 0, savePos = 0;
-            for (int i = 0; i < row.GetLength(0); i++)
-            {
-                if (row[i] == c) count++;
-                else savePos = i;
-            }
-
-            if (count == 2 && row[savePos] == ' ') return savePos + 1;
-
-            return position;
-        }
+        
         private int GetRandomCornerPos()
         {
             int position;
@@ -175,20 +162,5 @@ namespace Project_OOP.TicTacToe
             }
             return position;
         }
-        // public void BotMakeMove(char c)
-        // {
-        //     int position;
-        //     _display = c;
-        //     Thread.Sleep(1000);
-        //     while (true)
-        //     {
-        //         position = _rand.Next(1, 10);
-        //         if (_allMoves.Contains(position))
-        //         {
-        //             break;
-        //         }
-        //     }
-        //     SetPosWithAllAssignments(position);
-        // }
     }
 }

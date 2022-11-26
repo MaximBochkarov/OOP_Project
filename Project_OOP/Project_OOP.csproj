@@ -40,7 +40,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="DataBase\DBContext.cs" />
-        <Compile Include="DataBase\DBMethods.cs" />
+        <Compile Include="DataBase\DataHandling.cs" />
         <Compile Include="GameItems\Game.cs" />
         <Compile Include="GameItems\GameAccount.cs" />
         <Compile Include="GameItems\GameStatus.cs" />

@@ -19,9 +19,9 @@ namespace Project_OOP
             GameVariety.GetSoloRankedGame(player3, 40);
             
             
-            DBMethods.GetStats();
+            DataHandling.GetStats();
             Console.WriteLine("------------------------------------------------");
-            DBMethods.GetAccInfo();
+            DataHandling.GetAccInfo();
         }
     }
 }

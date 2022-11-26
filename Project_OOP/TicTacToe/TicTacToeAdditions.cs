@@ -2,7 +2,7 @@
 
 namespace Project_OOP.TicTacToe
 {
-    public class TicTacToeAdditions
+    public static class TicTacToeAdditions
     {
         public static char ChooseSign()
         {
@@ -22,7 +22,6 @@ namespace Project_OOP.TicTacToe
                 if (sign == '0' || sign == 'X') break;
                 Console.WriteLine("You can choose cross ( 'X' )  or  toe ( '0' ) only");
             }
-
             return sign;
         }
 
@@ -49,8 +48,20 @@ namespace Project_OOP.TicTacToe
                 if (order == 1 || order == 2) break;
                 Console.WriteLine("Choose number 1 or 2");
             }
-
             return order == 1;
+        }
+        public static int CheckPosition(char[] row, char c)
+        {
+            int position = -1, count = 0, savePos = 0;
+            for (int i = 0; i < row.GetLength(0); i++)
+            {
+                if (row[i] == c) count++;
+                else savePos = i;
+            }
+
+            if (count == 2 && row[savePos] == ' ') return savePos + 1;
+
+            return position;
         }
     }
 }
