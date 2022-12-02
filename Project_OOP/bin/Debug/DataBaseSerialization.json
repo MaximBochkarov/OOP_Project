@@ -1,1 +1,32 @@
-{"UsersList":[{"UserName":"aboba","CurrentRating":100,"AccType":"DefaultAccount"}],"GameHistory":[]}
+{
+  "UsersList": [
+    {
+      "$type": "Project_OOP.GameItems.ThriftyGameAccount, Project_OOP",
+      "UserName": "solify",
+      "CurrentRating": 90
+    },
+    {
+      "$type": "Project_OOP.GameItems.PremiumGameAccount, Project_OOP",
+      "UserName": "kirgo",
+      "CurrentRating": 140
+    }
+  ],
+  "GameHistory": [
+    {
+      "Rating": 20,
+      "Opponent": {
+        "$type": "Project_OOP.GameItems.ThriftyGameAccount, Project_OOP",
+        "UserName": "solify",
+        "CurrentRating": 90
+      },
+      "CurrentAccount": {
+        "$type": "Project_OOP.GameItems.PremiumGameAccount, Project_OOP",
+        "UserName": "kirgo",
+        "CurrentRating": 140
+      },
+      "GameIndex": 38257,
+      "GameStatus": 0,
+      "GameName": "StandardGame"
+    }
+  ]
+}

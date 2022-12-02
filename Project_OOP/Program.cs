@@ -1,6 +1,4 @@
-﻿using System;
-using Project_OOP.DataBase;
-using Project_OOP.GameItems;
+﻿using Project_OOP.GameItems;
 
 namespace Project_OOP
 {
@@ -8,7 +6,7 @@ namespace Project_OOP
     {
         public static void Main(string[] args)
         {
-            GameProcess gameProcess = new GameProcess();
+            var gameProcess = new GameProcess();
             gameProcess.Start();
         }
     }

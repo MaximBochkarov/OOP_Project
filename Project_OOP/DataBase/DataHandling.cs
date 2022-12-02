@@ -13,7 +13,7 @@ namespace Project_OOP.DataBase
             Console.WriteLine($"Total players: {database.UsersList.Count}");
             foreach (var player in database.UsersList)
             {
-                Console.WriteLine($"{accNumber}. Name: {player.UserName}, \trating: {player.CurrentRating}, \tacc-type: {player.AccType}");
+                Console.WriteLine($"{accNumber}. Name: {player.UserName}, \trating: {player.CurrentRating}, \tacc-type: {player.GetType().Name}");
                 accNumber++;
             }
         }
@@ -42,18 +42,34 @@ namespace Project_OOP.DataBase
             }
             
         }
-        
         public static void SaveData(DbContext dbContext)
         {
-            var dbContextJson = JsonConvert.SerializeObject(dbContext);
+            var dbContextJson = JsonConvert.SerializeObject(dbContext, Formatting.Indented, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            });
             File.WriteAllText("DataBaseSerialization.json", dbContextJson);
         }
         public static DbContext GetData()
         {
             var dbContextJson = File.ReadAllText("DataBaseSerialization.json");
-            var db = JsonConvert.DeserializeObject<DbContext>(dbContextJson);
+            var db = JsonConvert.DeserializeObject<DbContext>(dbContextJson, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            });
             return db ?? new DbContext();
         } 
+        // public static void SaveData(DbContext dbContext)
+        // {
+        //     var dbContextJson = JsonConvert.SerializeObject(dbContext);
+        //     File.WriteAllText("DataBaseSerialization.json", dbContextJson);
+        // }
+        // public static DbContext GetData()
+        // {
+        //     var dbContextJson = File.ReadAllText("DataBaseSerialization.json");
+        //     var db = JsonConvert.DeserializeObject<DbContext>(dbContextJson);
+        //     return db ?? new DbContext();
+        // } 
         
     }
 }

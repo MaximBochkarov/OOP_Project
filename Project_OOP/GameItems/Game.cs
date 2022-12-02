@@ -70,7 +70,6 @@ namespace Project_OOP.GameItems
                     Console.WriteLine("Error in Game decide section");
                     break;
             }
-            // Program.DbContext.GameHistory.Add(new HistoryGame(_acc1, _acc2, Rating, GameIndex, gameStatus, GetType().Name));
             HistoryGame = new HistoryGame(_acc1, _acc2, Rating, GameIndex, gameStatus, GetType().Name);
         }
         private void AssignStatusWinner(GameAccount winner, GameAccount looser)

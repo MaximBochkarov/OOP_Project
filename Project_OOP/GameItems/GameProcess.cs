@@ -117,7 +117,8 @@ namespace Project_OOP.GameItems
         }
         private void AccountCreation(DbContext database)
         {
-            Console.WriteLine("Types: 1. Default; 2. Thrifty; 3. ExtraSeriesPoints; (4 - return to menu)");
+            Console.WriteLine("Types: 1. Default; 2. Thrifty; 3. Premium; (4 - return to menu)");
+            Console.Write("--> ");
             int decide = NumberChoice();
             switch (decide)
             {
@@ -142,8 +143,8 @@ namespace Project_OOP.GameItems
                     break;
                 case 3:
                     username = GetUsername(database);
-                    SaveAcc(new ExtraSeriesPointsGameAccount(username), database);
-                    Console.WriteLine($"Congrats {username}, the ExtraSeriesPoints account was created!");
+                    SaveAcc(new PremiumGameAccount(username), database);
+                    Console.WriteLine($"Congrats {username}, the Premium account was created!");
                     break;
                 default:
                     Console.WriteLine("Options (1 - 4) \n");
@@ -220,10 +221,9 @@ namespace Project_OOP.GameItems
             Console.WriteLine("Account was successfully removed!");
         }
 
-        private bool AmountOfPlayers(int amount, DbContext database)
+        private static bool AmountOfPlayers(int amount, DbContext database)
         {
-            return database.UsersList.Count >= 2;
+            return database.UsersList.Count >= amount;
         }
-
     }
 }
