@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Project_OOP.DataBase;
 using Project_OOP.TicTacToe;
 
 namespace Project_OOP.GameItems
 {
     public abstract class Game
     {
-        private static int _gameIndexSeed = 38256;
+        private static int _gameIndexSeed;
         private readonly GameAccount _acc1, _acc2;
         protected int GameIndex { get; set; }
 
@@ -15,6 +18,8 @@ namespace Project_OOP.GameItems
         public HistoryGame HistoryGame { get; private set; }
         protected Game(GameAccount acc1, GameAccount acc2, int rating)
         {
+            var gameHistory= DataHandling.GetData().GameHistory;
+            _gameIndexSeed = gameHistory.Count == 0 ? 38256 : gameHistory.ElementAt(gameHistory.Count-1).GameIndex;
             _acc1 = acc1;
             _acc2 = acc2;
             this.rating = rating;
