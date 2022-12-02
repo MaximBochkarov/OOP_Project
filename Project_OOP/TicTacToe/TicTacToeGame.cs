@@ -20,7 +20,7 @@ namespace Project_OOP.TicTacToe
             _bot = new TicTacToeBot(_gameLogic);
         }
 
-        public int StartGame()
+        public int StartGame(bool aiGame)
         {
             char sign = TicTacToeAdditions.ChooseSign();
             _turn = TicTacToeAdditions.ChooseOrder();
@@ -36,7 +36,14 @@ namespace Project_OOP.TicTacToe
                 }
                 else
                 {
-                    if (!_gameLogic.MakeMove(TicTacToeAdditions.OppositeSign(sign))) continue;
+                    if (aiGame)
+                    {
+                        _bot.BotMakeMove(TicTacToeAdditions.OppositeSign(sign));
+                    }
+                    else
+                    {
+                        if (!_gameLogic.MakeMove(TicTacToeAdditions.OppositeSign(sign))) continue;
+                    }
                     result = CheckCombinations(TicTacToeAdditions.OppositeSign(sign));
                 }
 
@@ -50,36 +57,6 @@ namespace Project_OOP.TicTacToe
             }
             return -1;
         }
-
-        public int StartGameVsAi()
-        {
-            char sign = TicTacToeAdditions.ChooseSign();
-            _turn = TicTacToeAdditions.ChooseOrder();
-            while (!_isFinished)
-            {
-                int result;
-                Draw(_gameLogic.Playground);
-                if (_turn)
-                {
-                    if (!_gameLogic.MakeMove(sign)) continue;
-                    result = CheckCombinations(sign);
-                }
-                else
-                {
-                    _bot.BotMakeMove(TicTacToeAdditions.OppositeSign(sign));
-                    result = CheckCombinations(TicTacToeAdditions.OppositeSign(sign));
-                }
-
-                if (result != -1)
-                {
-                    Draw(_gameLogic.Playground);
-                    return result;
-                }
-                _turn = !_turn;
-            }
-            return -1;
-        }
-
         private int CheckCombinations(char c)
         {
             _isFinished = _gameLogic.WinCombination(c);

@@ -9,17 +9,20 @@ namespace Project_OOP.GameItems
         public int CurrentRating
         {
             get => _currentRating;
-            protected set => _currentRating = value < 1 ? 1 : value;
+            set => _currentRating = value < 1 ? 1 : value;
         }
         private const int InitialRating = 100;
 
         public static readonly GameAccount System = new GameAccount();
+        
+        public string AccType { get; set; }
 
         public GameAccount(string userName)
         {
-            Program.DbContext.UsersList.Add(this);
+            // Program.DbContext.UsersList.Add(this);
             UserName = userName;
             CurrentRating = InitialRating;
+            AccType = "DefaultAccount";
         }
 
         private GameAccount()
@@ -45,6 +48,7 @@ namespace Project_OOP.GameItems
     {
         public ThriftyGameAccount(string userName) : base(userName)
         {
+            AccType = "ThriftyGameAccount";
         }
         public override void LoseGame(Game game, GameAccount opponent)
         {
@@ -58,6 +62,7 @@ namespace Project_OOP.GameItems
         public ExtraSeriesPointsGameAccount(string userName) : base(userName)
         {
             _series = 0;
+            AccType = "ExtraSeriesPointsGameAccount";
         }
         public override void WinGame(Game game, GameAccount opponent)
         {

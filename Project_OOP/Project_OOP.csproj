@@ -33,6 +33,9 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+          <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
@@ -43,6 +46,7 @@
         <Compile Include="DataBase\DataHandling.cs" />
         <Compile Include="GameItems\Game.cs" />
         <Compile Include="GameItems\GameAccount.cs" />
+        <Compile Include="GameItems\GameProcess.cs" />
         <Compile Include="GameItems\GameStatus.cs" />
         <Compile Include="GameItems\GameVariety.cs" />
         <Compile Include="GameItems\HistoryGame.cs" />
@@ -52,6 +56,9 @@
         <Compile Include="TicTacToe\TicTacToeBot.cs" />
         <Compile Include="TicTacToe\TicTacToeGame.cs" />
         <Compile Include="TicTacToe\TicTacToeLogic.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Include="packages.config" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

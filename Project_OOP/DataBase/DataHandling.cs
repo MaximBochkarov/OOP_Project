@@ -1,26 +1,29 @@
 ﻿using System;
 using Project_OOP.GameItems;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Project_OOP.DataBase
 {
     public static class DataHandling
     {
-        public static void GetAccInfo()
+        public static void GetAccInfo(DbContext database)
         {
             int accNumber = 1;
-            foreach (var player in Program.DbContext.UsersList)
+            Console.WriteLine($"Total players: {database.UsersList.Count}");
+            foreach (var player in database.UsersList)
             {
-                Console.WriteLine($"{accNumber}. Name: {player.UserName},\t acc-type: {player.GetType().Name},\trating: {player.CurrentRating}");
+                Console.WriteLine($"{accNumber}. Name: {player.UserName}, \trating: {player.CurrentRating}, \tacc-type: {player.AccType}");
                 accNumber++;
             }
         }
-        public static void GetStats()
+        public static void GetStats(DbContext database)
         {
             int gameNumber = 1;
-            Console.WriteLine($"Total games: {Program.DbContext.GameHistory.Count}");
-            foreach(var game in Program.DbContext.GameHistory)
+            Console.WriteLine($"Total games: {database.GameHistory.Count}");
+            foreach(var game in database.GameHistory)
             {
-                Console.Write($"{gameNumber++}-({game.GameName})\t : index: {game.GameIndex} -->\t");
+                Console.Write($"{gameNumber++}-({game.GameName}): \tindex: {game.GameIndex} -->\t");
                 switch (game.GameStatus)
                 {
                     case GameStatus.Win:
@@ -39,5 +42,18 @@ namespace Project_OOP.DataBase
             }
             
         }
+        
+        public static void SaveData(DbContext dbContext)
+        {
+            var dbContextJson = JsonConvert.SerializeObject(dbContext);
+            File.WriteAllText("DataBaseSerialization.json", dbContextJson);
+        }
+        public static DbContext GetData()
+        {
+            var dbContextJson = File.ReadAllText("DataBaseSerialization.json");
+            var db = JsonConvert.DeserializeObject<DbContext>(dbContextJson);
+            return db ?? new DbContext();
+        } 
+        
     }
 }

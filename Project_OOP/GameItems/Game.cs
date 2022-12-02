@@ -12,7 +12,7 @@ namespace Project_OOP.GameItems
         protected readonly int rating;
         public abstract int Rating { get; }
         protected bool AiGame { get; set; }
-
+        public HistoryGame HistoryGame { get; private set; }
         protected Game(GameAccount acc1, GameAccount acc2, int rating)
         {
             _acc1 = acc1;
@@ -43,10 +43,10 @@ namespace Project_OOP.GameItems
                 return;
             }
 
+            Console.WriteLine("..........G..a..m..e....S..t..a..r..t..e..d..........");
             Console.WriteLine($"Game index: {GameIndex}");
             var ticTacToeGame = new TicTacToeGame();
-
-            int decide = AiGame ? ticTacToeGame.StartGameVsAi() : ticTacToeGame.StartGame();
+            int decide = ticTacToeGame.StartGame(AiGame);
 
             GameStatus gameStatus;
             
@@ -70,7 +70,8 @@ namespace Project_OOP.GameItems
                     Console.WriteLine("Error in Game decide section");
                     break;
             }
-            Program.DbContext.GameHistory.Add(new HistoryGame(_acc1, _acc2, Rating, GameIndex, gameStatus, GetType().Name));
+            // Program.DbContext.GameHistory.Add(new HistoryGame(_acc1, _acc2, Rating, GameIndex, gameStatus, GetType().Name));
+            HistoryGame = new HistoryGame(_acc1, _acc2, Rating, GameIndex, gameStatus, GetType().Name);
         }
         private void AssignStatusWinner(GameAccount winner, GameAccount looser)
         {

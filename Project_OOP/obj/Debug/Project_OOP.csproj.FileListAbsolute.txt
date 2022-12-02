@@ -5,3 +5,6 @@ C:\Users\Irina\RiderProjects\Project_OOP\Project_OOP\obj\Debug\Project_OOP.cspro
 C:\Users\Irina\RiderProjects\Project_OOP\Project_OOP\obj\Debug\Project_OOP.csproj.CoreCompileInputs.cache
 C:\Users\Irina\RiderProjects\Project_OOP\Project_OOP\obj\Debug\Project_OOP.exe
 C:\Users\Irina\RiderProjects\Project_OOP\Project_OOP\obj\Debug\Project_OOP.pdb
+C:\Users\Irina\RiderProjects\Project_OOP\Project_OOP\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Irina\RiderProjects\Project_OOP\Project_OOP\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Irina\RiderProjects\Project_OOP\Project_OOP\obj\Debug\Project_OOP.csproj.CopyComplete
