@@ -58,18 +58,6 @@ namespace Project_OOP.DataBase
                 TypeNameHandling = TypeNameHandling.Auto
             });
             return db ?? new DbContext();
-        } 
-        // public static void SaveData(DbContext dbContext)
-        // {
-        //     var dbContextJson = JsonConvert.SerializeObject(dbContext);
-        //     File.WriteAllText("DataBaseSerialization.json", dbContextJson);
-        // }
-        // public static DbContext GetData()
-        // {
-        //     var dbContextJson = File.ReadAllText("DataBaseSerialization.json");
-        //     var db = JsonConvert.DeserializeObject<DbContext>(dbContextJson);
-        //     return db ?? new DbContext();
-        // } 
-        
+        }
     }
 }

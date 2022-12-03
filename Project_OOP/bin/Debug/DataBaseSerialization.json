@@ -1,60 +1,9 @@
 {
   "UsersList": [
     {
-      "$type": "Project_OOP.GameItems.ThriftyGameAccount, Project_OOP",
-      "UserName": "bebra",
-      "CurrentRating": 120
-    },
-    {
-      "UserName": "sugoma",
-      "CurrentRating": 80
+      "UserName": "max",
+      "CurrentRating": 100
     }
   ],
-  "GameHistory": [
-    {
-      "Rating": 10,
-      "Opponent": {
-        "UserName": "sugoma",
-        "CurrentRating": 90
-      },
-      "CurrentAccount": {
-        "$type": "Project_OOP.GameItems.ThriftyGameAccount, Project_OOP",
-        "UserName": "bebra",
-        "CurrentRating": 110
-      },
-      "GameIndex": 38257,
-      "GameStatus": 0,
-      "GameName": "StandardGame"
-    },
-    {
-      "Rating": 10,
-      "Opponent": {
-        "UserName": "sugoma",
-        "CurrentRating": 80
-      },
-      "CurrentAccount": {
-        "$type": "Project_OOP.GameItems.ThriftyGameAccount, Project_OOP",
-        "UserName": "bebra",
-        "CurrentRating": 120
-      },
-      "GameIndex": 38258,
-      "GameStatus": 0,
-      "GameName": "StandardGame"
-    },
-    {
-      "Rating": 10,
-      "Opponent": {
-        "UserName": "System",
-        "CurrentRating": 2147483547
-      },
-      "CurrentAccount": {
-        "$type": "Project_OOP.GameItems.ThriftyGameAccount, Project_OOP",
-        "UserName": "bebra",
-        "CurrentRating": 120
-      },
-      "GameIndex": 38259,
-      "GameStatus": 2,
-      "GameName": "SoloRankedGame"
-    }
-  ]
+  "GameHistory": []
 }

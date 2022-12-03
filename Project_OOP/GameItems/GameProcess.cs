@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using Project_OOP.DataBase;
 
 namespace Project_OOP.GameItems
@@ -37,9 +38,18 @@ namespace Project_OOP.GameItems
             {
                 case 1:
                     AccountCreation(database);
+                    Thread.Sleep(3000);
+                    Console.Clear();
                     break;
                 case 2:
+                    if (!AmountOfPlayers(1, database))
+                    {
+                        Console.WriteLine("No account created!");
+                        return;
+                    }
                     DeleteUser(database);
+                    Thread.Sleep(3000);
+                    Console.Clear();
                     break;
                 case 3:
                     GenerateGame(database);
@@ -72,6 +82,7 @@ namespace Project_OOP.GameItems
             }
 
             int rating;
+            GameAccount acc1, acc2;
 
             switch (decide)
             {
@@ -84,7 +95,14 @@ namespace Project_OOP.GameItems
                     Console.Write("Enter game rating: ");
                     rating = NumberChoice();
                     if (rating == -1) return;
-                    SaveGame(GameVariety.GetStandardGame(FindAccount(SetUsername(database), database), FindAccount(SetUsername(database), database), rating), database);
+                    acc1 = FindAccount(SetUsername(database), database);
+                    acc2 = FindAccount(SetUsername(database), database);
+                    if (AccountsIdentical(acc1, acc2))
+                    {
+                        Console.WriteLine("Cannot play with yourself!");
+                        return;
+                    }
+                    SaveGame(GameVariety.GetStandardGame(acc1, acc2, rating), database);
                     break;
                 case 2:
                     if (!AmountOfPlayers(2, database))
@@ -92,7 +110,14 @@ namespace Project_OOP.GameItems
                         Console.WriteLine("At least two players required");
                         return;
                     }
-                    SaveGame(GameVariety.GetPracticeGame(FindAccount(SetUsername(database), database), FindAccount(SetUsername(database), database)), database);
+                    acc1 = FindAccount(SetUsername(database), database);
+                    acc2 = FindAccount(SetUsername(database), database);
+                    if (AccountsIdentical(acc1, acc2))
+                    {
+                        Console.WriteLine("Cannot play with yourself!");
+                        return;
+                    }
+                    SaveGame(GameVariety.GetPracticeGame(acc1, acc2), database);
                     break;
                 case 3:
                     if (!AmountOfPlayers(1, database))
@@ -175,7 +200,7 @@ namespace Project_OOP.GameItems
             while (true)
             {
                 Console.Write("Create a username: ");
-                username = Console.ReadLine();
+                username = Console.ReadLine()?.Trim();
                 if (UserExists(username, database))
                 {
                     Console.WriteLine("Username is already engaged!");
@@ -224,6 +249,11 @@ namespace Project_OOP.GameItems
         private static bool AmountOfPlayers(int amount, DbContext database)
         {
             return database.UsersList.Count >= amount;
+        }
+
+        private static bool AccountsIdentical(GameAccount acc1, GameAccount acc2)
+        {
+            return acc1 == acc2;
         }
     }
 }
