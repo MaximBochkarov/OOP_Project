@@ -19,13 +19,15 @@ namespace Project_OOP.GameItems
         protected Game(GameAccount acc1, GameAccount acc2, int rating)
         {
             var gameHistory= DataHandling.GetData().GameHistory;
-            _gameIndexSeed = gameHistory.Count == 0 ? 38256 : gameHistory.ElementAt(gameHistory.Count-1).GameIndex;
+            _gameIndexSeed = gameHistory.Count == 0 ? 38256 : gameHistory[gameHistory.Count-1].GameIndex;
             _acc1 = acc1;
             _acc2 = acc2;
             this.rating = rating;
         }
         protected Game(GameAccount acc1, GameAccount acc2)
         {
+            var gameHistory= DataHandling.GetData().GameHistory;
+            _gameIndexSeed = gameHistory.Count == 0 ? 38256 : gameHistory[gameHistory.Count-1].GameIndex;
             _acc1 = acc1;
             _acc2 = acc2;
         }

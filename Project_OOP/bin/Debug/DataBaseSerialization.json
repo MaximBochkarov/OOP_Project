@@ -1,9 +1,118 @@
 {
   "UsersList": [
     {
-      "UserName": "max",
-      "CurrentRating": 100
+      "UserName": "a",
+      "CurrentRating": 120
+    },
+    {
+      "UserName": "b",
+      "CurrentRating": 60
+    },
+    {
+      "$type": "Project_OOP.GameItems.PremiumGameAccount, Project_OOP",
+      "UserName": "solify",
+      "CurrentRating": 140
     }
   ],
-  "GameHistory": []
+  "GameHistory": [
+    {
+      "Rating": 10,
+      "Opponent": {
+        "UserName": "b",
+        "CurrentRating": 90
+      },
+      "CurrentAccount": {
+        "UserName": "a",
+        "CurrentRating": 110
+      },
+      "GameIndex": 38257,
+      "GameStatus": 0,
+      "GameName": "StandardGame"
+    },
+    {
+      "Rating": 10,
+      "Opponent": {
+        "UserName": "b",
+        "CurrentRating": 80
+      },
+      "CurrentAccount": {
+        "UserName": "a",
+        "CurrentRating": 120
+      },
+      "GameIndex": 38258,
+      "GameStatus": 0,
+      "GameName": "StandardGame"
+    },
+    {
+      "Rating": 10,
+      "Opponent": {
+        "UserName": "b",
+        "CurrentRating": 70
+      },
+      "CurrentAccount": {
+        "UserName": "a",
+        "CurrentRating": 130
+      },
+      "GameIndex": 38259,
+      "GameStatus": 0,
+      "GameName": "StandardGame"
+    },
+    {
+      "Rating": 0,
+      "Opponent": {
+        "UserName": "b",
+        "CurrentRating": 70
+      },
+      "CurrentAccount": {
+        "UserName": "a",
+        "CurrentRating": 130
+      },
+      "GameIndex": 38260,
+      "GameStatus": 0,
+      "GameName": "PracticeGame"
+    },
+    {
+      "Rating": 10,
+      "Opponent": {
+        "UserName": "b",
+        "CurrentRating": 60
+      },
+      "CurrentAccount": {
+        "UserName": "a",
+        "CurrentRating": 140
+      },
+      "GameIndex": 38261,
+      "GameStatus": 0,
+      "GameName": "StandardGame"
+    },
+    {
+      "Rating": 0,
+      "Opponent": {
+        "UserName": "b",
+        "CurrentRating": 60
+      },
+      "CurrentAccount": {
+        "UserName": "a",
+        "CurrentRating": 140
+      },
+      "GameIndex": 38262,
+      "GameStatus": 0,
+      "GameName": "PracticeGame"
+    },
+    {
+      "Rating": 20,
+      "Opponent": {
+        "UserName": "a",
+        "CurrentRating": 120
+      },
+      "CurrentAccount": {
+        "$type": "Project_OOP.GameItems.PremiumGameAccount, Project_OOP",
+        "UserName": "solify",
+        "CurrentRating": 140
+      },
+      "GameIndex": 38263,
+      "GameStatus": 0,
+      "GameName": "StandardGame"
+    }
+  ]
 }
