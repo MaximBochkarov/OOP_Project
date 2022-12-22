@@ -1,28 +1,49 @@
 {
   "UsersList": [
     {
-      "UserName": "a",
-      "CurrentRating": 120
-    },
-    {
-      "UserName": "b",
-      "CurrentRating": 60
+      "$type": "Project_OOP.GameItems.ExtraSeriesPointsGameAccount, Project_OOP",
+      "_matchResults": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "_skip": 4,
+      "_hasThree": true,
+      "_hasFive": true,
+      "UserName": "max",
+      "CurrentRating": 295
     },
     {
       "$type": "Project_OOP.GameItems.PremiumGameAccount, Project_OOP",
-      "UserName": "solify",
-      "CurrentRating": 140
+      "UserName": "kirgo",
+      "CurrentRating": 5
     }
   ],
   "GameHistory": [
     {
       "Rating": 10,
       "Opponent": {
-        "UserName": "b",
+        "$type": "Project_OOP.GameItems.PremiumGameAccount, Project_OOP",
+        "UserName": "kirgo",
         "CurrentRating": 90
       },
       "CurrentAccount": {
-        "UserName": "a",
+        "$type": "Project_OOP.GameItems.ExtraSeriesPointsGameAccount, Project_OOP",
+        "_matchResults": [
+          0
+        ],
+        "_skip": 0,
+        "_hasThree": false,
+        "_hasFive": false,
+        "UserName": "max",
         "CurrentRating": 110
       },
       "GameIndex": 38257,
@@ -32,11 +53,20 @@
     {
       "Rating": 10,
       "Opponent": {
-        "UserName": "b",
+        "$type": "Project_OOP.GameItems.PremiumGameAccount, Project_OOP",
+        "UserName": "kirgo",
         "CurrentRating": 80
       },
       "CurrentAccount": {
-        "UserName": "a",
+        "$type": "Project_OOP.GameItems.ExtraSeriesPointsGameAccount, Project_OOP",
+        "_matchResults": [
+          0,
+          0
+        ],
+        "_skip": 0,
+        "_hasThree": false,
+        "_hasFive": false,
+        "UserName": "max",
         "CurrentRating": 120
       },
       "GameIndex": 38258,
@@ -46,73 +76,254 @@
     {
       "Rating": 10,
       "Opponent": {
-        "UserName": "b",
+        "$type": "Project_OOP.GameItems.PremiumGameAccount, Project_OOP",
+        "UserName": "kirgo",
         "CurrentRating": 70
       },
       "CurrentAccount": {
-        "UserName": "a",
-        "CurrentRating": 130
+        "$type": "Project_OOP.GameItems.ExtraSeriesPointsGameAccount, Project_OOP",
+        "_matchResults": [
+          0,
+          0,
+          0
+        ],
+        "_skip": 0,
+        "_hasThree": true,
+        "_hasFive": false,
+        "UserName": "max",
+        "CurrentRating": 160
       },
       "GameIndex": 38259,
       "GameStatus": 0,
       "GameName": "StandardGame"
     },
     {
-      "Rating": 0,
+      "Rating": 10,
       "Opponent": {
-        "UserName": "b",
-        "CurrentRating": 70
+        "UserName": "System",
+        "CurrentRating": 2147483557
       },
       "CurrentAccount": {
-        "UserName": "a",
-        "CurrentRating": 130
+        "$type": "Project_OOP.GameItems.ExtraSeriesPointsGameAccount, Project_OOP",
+        "_matchResults": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "_skip": 0,
+        "_hasThree": true,
+        "_hasFive": false,
+        "UserName": "max",
+        "CurrentRating": 150
       },
       "GameIndex": 38260,
-      "GameStatus": 0,
-      "GameName": "PracticeGame"
+      "GameStatus": 1,
+      "GameName": "SoloRankedGame"
     },
     {
       "Rating": 10,
       "Opponent": {
-        "UserName": "b",
+        "$type": "Project_OOP.GameItems.PremiumGameAccount, Project_OOP",
+        "UserName": "kirgo",
         "CurrentRating": 60
       },
       "CurrentAccount": {
-        "UserName": "a",
-        "CurrentRating": 140
+        "$type": "Project_OOP.GameItems.ExtraSeriesPointsGameAccount, Project_OOP",
+        "_matchResults": [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "_skip": 4,
+        "_hasThree": false,
+        "_hasFive": false,
+        "UserName": "max",
+        "CurrentRating": 160
       },
       "GameIndex": 38261,
       "GameStatus": 0,
       "GameName": "StandardGame"
     },
     {
-      "Rating": 0,
+      "Rating": 10,
       "Opponent": {
-        "UserName": "b",
-        "CurrentRating": 60
+        "$type": "Project_OOP.GameItems.PremiumGameAccount, Project_OOP",
+        "UserName": "kirgo",
+        "CurrentRating": 50
       },
       "CurrentAccount": {
-        "UserName": "a",
-        "CurrentRating": 140
+        "$type": "Project_OOP.GameItems.ExtraSeriesPointsGameAccount, Project_OOP",
+        "_matchResults": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "_skip": 4,
+        "_hasThree": false,
+        "_hasFive": false,
+        "UserName": "max",
+        "CurrentRating": 170
       },
       "GameIndex": 38262,
       "GameStatus": 0,
-      "GameName": "PracticeGame"
+      "GameName": "StandardGame"
     },
     {
-      "Rating": 20,
+      "Rating": 10,
       "Opponent": {
-        "UserName": "a",
-        "CurrentRating": 120
+        "$type": "Project_OOP.GameItems.PremiumGameAccount, Project_OOP",
+        "UserName": "kirgo",
+        "CurrentRating": 40
       },
       "CurrentAccount": {
-        "$type": "Project_OOP.GameItems.PremiumGameAccount, Project_OOP",
-        "UserName": "solify",
-        "CurrentRating": 140
+        "$type": "Project_OOP.GameItems.ExtraSeriesPointsGameAccount, Project_OOP",
+        "_matchResults": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "_skip": 4,
+        "_hasThree": true,
+        "_hasFive": false,
+        "UserName": "max",
+        "CurrentRating": 210
       },
       "GameIndex": 38263,
       "GameStatus": 0,
       "GameName": "StandardGame"
-    }
+    },
+    {
+      "Rating": 10,
+      "Opponent": {
+        "$type": "Project_OOP.GameItems.PremiumGameAccount, Project_OOP",
+        "UserName": "kirgo",
+        "CurrentRating": 30
+      },
+      "CurrentAccount": {
+        "$type": "Project_OOP.GameItems.ExtraSeriesPointsGameAccount, Project_OOP",
+        "_matchResults": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "_skip": 4,
+        "_hasThree": true,
+        "_hasFive": false,
+        "UserName": "max",
+        "CurrentRating": 220
+      },
+      "GameIndex": 38264,
+      "GameStatus": 0,
+      "GameName": "StandardGame"
+    },
+    {
+      "Rating": 10,
+      "Opponent": {
+        "$type": "Project_OOP.GameItems.PremiumGameAccount, Project_OOP",
+        "UserName": "kirgo",
+        "CurrentRating": 20
+      },
+      "CurrentAccount": {
+        "$type": "Project_OOP.GameItems.ExtraSeriesPointsGameAccount, Project_OOP",
+        "_matchResults": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "_skip": 4,
+        "_hasThree": true,
+        "_hasFive": true,
+        "UserName": "max",
+        "CurrentRating": 280
+      },
+      "GameIndex": 38265,
+      "GameStatus": 0,
+      "GameName": "StandardGame"
+    },
+    {
+      "Rating": 10,
+      "Opponent": {
+        "$type": "Project_OOP.GameItems.PremiumGameAccount, Project_OOP",
+        "UserName": "kirgo",
+        "CurrentRating": 10
+      },
+      "CurrentAccount": {
+        "$type": "Project_OOP.GameItems.ExtraSeriesPointsGameAccount, Project_OOP",
+        "_matchResults": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "_skip": 4,
+        "_hasThree": true,
+        "_hasFive": true,
+        "UserName": "max",
+        "CurrentRating": 290
+      },
+      "GameIndex": 38266,
+      "GameStatus": 0,
+      "GameName": "StandardGame"
+    },
+    {
+      "Rating": 5,
+      "Opponent": {
+        "$type": "Project_OOP.GameItems.PremiumGameAccount, Project_OOP",
+        "UserName": "kirgo",
+        "CurrentRating": 5
+      },
+      "CurrentAccount": {
+        "$type": "Project_OOP.GameItems.ExtraSeriesPointsGameAccount, Project_OOP",
+        "_matchResults": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "_skip": 4,
+        "_hasThree": true,
+        "_hasFive": true,
+        "UserName": "max",
+        "CurrentRating": 295
+      },
+      "GameIndex": 38267,
+      "GameStatus": 0,
+      "GameName": "StandardGame"
+    },
+    null
   ]
 }

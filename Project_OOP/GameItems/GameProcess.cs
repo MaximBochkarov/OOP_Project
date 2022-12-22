@@ -142,13 +142,13 @@ namespace Project_OOP.GameItems
         }
         private void AccountCreation(DbContext database)
         {
-            Console.WriteLine("Types: 1. Default; 2. Thrifty; 3. Premium; (4 - return to menu)");
+            Console.WriteLine("Types: 1. Default; 2. Thrifty; 3. Premium; 4. ExtraSeriesPoints (5 - return to menu)");
             Console.Write("--> ");
             int decide = NumberChoice();
             switch (decide)
             {
                 case -1:
-                case 4:
+                case 5:
                     return;
             }
 
@@ -171,8 +171,13 @@ namespace Project_OOP.GameItems
                     SaveAcc(new PremiumGameAccount(username), database);
                     Console.WriteLine($"Congrats {username}, the Premium account was created!");
                     break;
+                case 4:
+                    username = GetUsername(database);
+                    SaveAcc(new ExtraSeriesPointsGameAccount(username), database);
+                    Console.WriteLine($"Congrats {username}, the ExtraSeriesPointsGameAccount account was created!");
+                    break;
                 default:
-                    Console.WriteLine("Options (1 - 4) \n");
+                    Console.WriteLine("Options (1 - 5) \n");
                     break;
             }
         }
