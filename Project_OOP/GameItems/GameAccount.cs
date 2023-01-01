@@ -10,6 +10,8 @@ namespace Project_OOP.GameItems
         public string UserName { get; }
         
         private int _currentRating;
+
+        public string Password { get; }
         public int CurrentRating
         {
             get => _currentRating;
@@ -20,9 +22,10 @@ namespace Project_OOP.GameItems
         public static readonly GameAccount System = new GameAccount();
         
 
-        public GameAccount(string userName)
+        public GameAccount(string userName, string password)
         {
             UserName = userName;
+            Password = password;
             CurrentRating = InitialRating;
         }
 
@@ -31,15 +34,15 @@ namespace Project_OOP.GameItems
             CurrentRating = Int32.MaxValue - InitialRating;
             UserName = "System";
         }
-        public virtual void WinGame(Game game, GameAccount opponent)
+        public virtual void WinGame(Game game)
         {
             CurrentRating += game.Rating;
         }
-        public virtual void LoseGame(Game game, GameAccount opponent)
+        public virtual void LoseGame(Game game)
         {
             CurrentRating -= game.Rating;
         }
-        public virtual void Draw(Game game, GameAccount opponent)
+        public virtual void Draw()
         {
             
         }
@@ -47,10 +50,10 @@ namespace Project_OOP.GameItems
 
     public class ThriftyGameAccount : GameAccount
     {
-        public ThriftyGameAccount(string userName) : base(userName)
+        public ThriftyGameAccount(string userName, string password) : base(userName, password)
         {
         }
-        public override void LoseGame(Game game, GameAccount opponent)
+        public override void LoseGame(Game game)
         {
             CurrentRating -= game.Rating / 2;
         }
@@ -58,10 +61,10 @@ namespace Project_OOP.GameItems
 
     public class PremiumGameAccount : GameAccount
     {
-        public PremiumGameAccount(string userName) : base(userName)
+        public PremiumGameAccount(string userName, string password) : base(userName, password)
         {
         }
-        public override void WinGame(Game game, GameAccount opponent)
+        public override void WinGame(Game game)
         {
             CurrentRating += game.Rating * 2;
         }
@@ -76,7 +79,7 @@ namespace Project_OOP.GameItems
         private bool _hasThree;
         [JsonRequired]
         private bool _hasFive;
-        public ExtraSeriesPointsGameAccount(string userName) : base(userName)
+        public ExtraSeriesPointsGameAccount(string userName, string password) : base(userName, password)
         {
             _matchResults = new List<GameStatus>();
             _skip = 0;
@@ -84,18 +87,18 @@ namespace Project_OOP.GameItems
             _hasFive = false;
         }
         
-        public override void WinGame(Game game, GameAccount opponent)
+        public override void WinGame(Game game)
         {
             CurrentRating += game.Rating;
             _matchResults.Add(GameStatus.Win);
             CheckSeries();
         }
-        public override void LoseGame(Game game, GameAccount opponent)
+        public override void LoseGame(Game game)
         {
             CurrentRating -= game.Rating;
             _matchResults.Add(GameStatus.Lose);
         }
-        public override void Draw(Game game, GameAccount opponent)
+        public override void Draw()
         {
             _matchResults.Add(GameStatus.Draw);
         }

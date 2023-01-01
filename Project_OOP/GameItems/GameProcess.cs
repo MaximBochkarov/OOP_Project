@@ -3,6 +3,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using Project_OOP.DataBase;
+using System.Security.Cryptography;
 
 namespace Project_OOP.GameItems
 {
@@ -69,10 +70,10 @@ namespace Project_OOP.GameItems
             }
         }
 
-        private void GenerateGame(DbContext database)
+        private static void GenerateGame(DbContext database)
         {
             Console.WriteLine("Types: 1. Standard; 2. Practice; 3. SoloRanked; (4 - return to menu)");
-            Console.Write("--> ");
+            Console.Write(" --> ");
             int decide = NumberChoice();
             switch (decide)
             {
@@ -96,12 +97,15 @@ namespace Project_OOP.GameItems
                     rating = NumberChoice();
                     if (rating == -1) return;
                     acc1 = FindAccount(SetUsername(database), database);
+                    if (!SignIn(acc1.Password)) return;
                     acc2 = FindAccount(SetUsername(database), database);
                     if (AccountsIdentical(acc1, acc2))
                     {
                         Console.WriteLine("Cannot play with yourself!");
                         return;
                     }
+                    if (!SignIn(acc2.Password)) return;
+                    
                     SaveGame(GameVariety.GetStandardGame(acc1, acc2, rating), database);
                     break;
                 case 2:
@@ -111,12 +115,14 @@ namespace Project_OOP.GameItems
                         return;
                     }
                     acc1 = FindAccount(SetUsername(database), database);
+                    if (!SignIn(acc1.Password)) return;
                     acc2 = FindAccount(SetUsername(database), database);
                     if (AccountsIdentical(acc1, acc2))
                     {
                         Console.WriteLine("Cannot play with yourself!");
                         return;
                     }
+                    if (!SignIn(acc2.Password)) return;
                     SaveGame(GameVariety.GetPracticeGame(acc1, acc2), database);
                     break;
                 case 3:
@@ -128,22 +134,24 @@ namespace Project_OOP.GameItems
                     Console.Write("Enter game rating: ");
                     rating = NumberChoice();
                     if (rating == -1) return;
-                    SaveGame(GameVariety.GetSoloRankedGame(FindAccount(SetUsername(database), database), rating), database);
+                    acc1 = FindAccount(SetUsername(database), database);
+                    if (!SignIn(acc1.Password)) return;
+                    SaveGame(GameVariety.GetSoloRankedGame(acc1, rating), database);
                     break;
                 default:
                     Console.WriteLine("Options (1 - 4) \n");
                     break;
             }
         }
-
+        
         private static GameAccount FindAccount(string username, DbContext database)
         {
             return database.UsersList.FirstOrDefault(user => user.UserName.Equals(username));
         }
-        private void AccountCreation(DbContext database)
+        private static void AccountCreation(DbContext database)
         {
             Console.WriteLine("Types: 1. Default; 2. Thrifty; 3. Premium; 4. ExtraSeriesPoints (5 - return to menu)");
-            Console.Write("--> ");
+            Console.Write(" --> ");
             int decide = NumberChoice();
             switch (decide)
             {
@@ -152,29 +160,29 @@ namespace Project_OOP.GameItems
                     return;
             }
 
-            string username;
+            BasicAccData basicAccData;
 
             switch (decide)
             {
                 case 1:
-                    username = GetUsername(database);
-                    SaveAcc(new GameAccount(username), database);
-                    Console.WriteLine($"Congrats {username}, the default account was created!");
+                    basicAccData = SignUp(database);
+                    SaveAcc(new GameAccount(basicAccData.Name, basicAccData.Password), database);
+                    Console.WriteLine($"Congrats {basicAccData.Name}, the default account was created!");
                     break;
                 case 2:
-                    username = GetUsername(database);
-                    SaveAcc(new ThriftyGameAccount(username), database);
-                    Console.WriteLine($"Congrats {username}, the thrifty account was created!");
+                    basicAccData = SignUp(database);
+                    SaveAcc(new ThriftyGameAccount(basicAccData.Name, basicAccData.Password), database);
+                    Console.WriteLine($"Congrats {basicAccData.Name}, the thrifty account was created!");
                     break;
                 case 3:
-                    username = GetUsername(database);
-                    SaveAcc(new PremiumGameAccount(username), database);
-                    Console.WriteLine($"Congrats {username}, the Premium account was created!");
+                    basicAccData = SignUp(database);
+                    SaveAcc(new PremiumGameAccount(basicAccData.Name, basicAccData.Password), database);
+                    Console.WriteLine($"Congrats {basicAccData.Name}, the Premium account was created!");
                     break;
                 case 4:
-                    username = GetUsername(database);
-                    SaveAcc(new ExtraSeriesPointsGameAccount(username), database);
-                    Console.WriteLine($"Congrats {username}, the ExtraSeriesPointsGameAccount account was created!");
+                    basicAccData = SignUp(database);
+                    SaveAcc(new ExtraSeriesPointsGameAccount(basicAccData.Name, basicAccData.Password), database);
+                    Console.WriteLine($"Congrats {basicAccData.Name}, the ExtraSeriesPointsGameAccount account was created!");
                     break;
                 default:
                     Console.WriteLine("Options (1 - 5) \n");
@@ -259,6 +267,85 @@ namespace Project_OOP.GameItems
         private static bool AccountsIdentical(GameAccount acc1, GameAccount acc2)
         {
             return acc1 == acc2;
+        }
+
+        private static BasicAccData SignUp(DbContext database)
+        {
+            string username = GetUsername(database);
+            string password = CreatePasswordHash();
+            return new BasicAccData(username, password);
+        }
+        private static bool SignIn(string password)
+        {
+            while (true)
+            {
+                if (CheckOutPasswords(password)) return true;
+                Console.WriteLine("Press 1 to try again or any other key to continue");
+                string choice = Console.ReadLine();
+                if (choice != "1") return false;
+            }
+        }
+        
+        private static string CreatePasswordHash()
+        {
+            Console.Write("Enter a password: ");
+            string password = Console.ReadLine();
+
+            // Generate a random salt
+            byte[] salt;
+            new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+
+            // Create the hash
+            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
+            byte[] hash = pbkdf2.GetBytes(20);
+
+            // Concatenate the salt and hash
+            byte[] hashBytes = new byte[36];
+            Array.Copy(salt, 0, hashBytes, 0, 16);
+            Array.Copy(hash, 0, hashBytes, 16, 20);
+
+            // Convert the salt and hash to a string
+            string savedPasswordHash = Convert.ToBase64String(hashBytes);
+            return savedPasswordHash;
+        }
+        private static bool CheckOutPasswords(string savedPasswordHash)
+        {
+            Console.Write("Enter a password to verify: ");
+            string enteredPassword = Console.ReadLine();
+
+            // Retrieve the stored salt and hash
+            // retrieve the stored password hash
+            byte[] hashBytes = Convert.FromBase64String(savedPasswordHash);
+            byte[] salt = new byte[16];
+            Array.Copy(hashBytes, 0, salt, 0, 16);
+
+            // Generate a new hash for the entered password
+            var pbkdf2 = new Rfc2898DeriveBytes(enteredPassword, salt, 10000);
+            byte[] newHash = pbkdf2.GetBytes(20);
+
+            // Compare the new hash to the stored hash
+            bool isPasswordValid = true;
+            for (int i = 0; i < 20; i++)
+            {
+                if (hashBytes[i + 16] != newHash[i])
+                {
+                    isPasswordValid = false;
+                    break;
+                }
+            }
+            Console.WriteLine($"<----Is password valid: {isPasswordValid}---->\n");
+            return isPasswordValid;
+        }
+    }
+
+    class BasicAccData
+    {
+        public string Name { get;  }
+        public string Password { get;  }
+        public BasicAccData(string name, string password)
+        {
+            Name = name;
+            Password = password;
         }
     }
 }

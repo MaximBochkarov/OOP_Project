@@ -60,8 +60,8 @@ namespace Project_OOP.GameItems
             switch (decide)
             {
                 case 0:
-                    _acc1.Draw(this, _acc2);
-                    _acc2.Draw(this, _acc1);
+                    _acc1.Draw();
+                    _acc2.Draw();
                     gameStatus = GameStatus.Draw;
                     break;
                 case 1:
@@ -81,8 +81,8 @@ namespace Project_OOP.GameItems
         }
         private void AssignStatusWinner(GameAccount winner, GameAccount looser)
         {
-            winner.WinGame(this, looser);
-            looser.LoseGame(this, winner);
+            winner.WinGame(this);
+            looser.LoseGame(this);
         }
         private static void CheckNegativeRating(int rating)
         {
